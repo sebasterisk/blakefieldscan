@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
+    </style>
+</head>
+<body>
+    <!-- DISPLAY AREA -->
+    <div id="catchall">
+        <!-- all elements are position: absolute, order should NOT matter -->
+        <div id="title" class="roboto-narrowbold size1 tight">  information     </div>
+        <div id="clock" class="roboto-narrowbold size1 tight">  12:56           </div>
+        <div id="date" class="roboto-narrow size3">     August 12, 2036 </div>
+        <div id="contentarea1" class="border"></div>
+        <div id="contentarea2"></div>
+        <div id="products" class="border"></div>
+        <div id="ticker" class="border"></div>
+    </div>
+    
+    <!-- MAIN PRODUCTS -->
+    
+    <!-- SIDEBAR PRODUCTS -->
+    <template id="events">
+        <span id="sidetitle" class="roboto-condbolder size4 sub">TODAY'S EVENTS</span>
+        <ul class="roboto-narrow altlist size3">
+            <!-- items here -->
+        </ul>
+    </template>
+    
+    <!-- SCRIPTS -->
+    <script src="scripts/clock.js"></script>
+    <script src="scripts/calendar.js" type="module"></script>
+</body>
+</html>
