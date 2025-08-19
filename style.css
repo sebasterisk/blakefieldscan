@@ -1,6 +1,8 @@
 :root{
     background-color: black;
-    color: #eff0f0
+    color: #eff0f0;
+
+    --speed: 18;
 }
 
 * {
@@ -131,7 +133,7 @@ body{
     }
 
     #sidetitle {
-        margin: 1.5cqh;
+        margin: 1.7cqh;
     }
 
     #products {
@@ -147,7 +149,7 @@ body{
         padding: 0.7cqh;
     }
 
-    #tickeritem{
+    .tickeritem{
         margin-left: 10cqw;
     }
 
@@ -182,4 +184,27 @@ body{
 
 .altlist *:nth-child(odd){
     background-color: #091a37;
+}
+
+.marquee {
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: end;
+}
+#ticker-content {
+   animation: marquee var(--speed) 0s linear normal infinite;
+   position: relative;
+   display: inline-block;
+   text-wrap: nowrap;
+}
+
+@keyframes marquee {
+   0% {
+      right: -1rem;
+      transform: translate(100%, 0%);
+   }
+   100% {
+      right: calc(100% + 1rem);
+      transform: translate(0%, 0%);
+   }
 }

@@ -1,8 +1,9 @@
 // freshman year era code being reused here :skull: might replace
 
 import ICAL from "https://unpkg.com/ical.js@2.2.1/dist/ical.js";
+let calendar = {}
 
-async function fetchandparse(){
+calendar.crack = async function(){
     let result
     try {
         const icaldata = await fetch("/server/products.php")
@@ -11,46 +12,63 @@ async function fetchandparse(){
         }
 
         result = await icaldata.json();
-        console.log(result);
+        // console.log(result);
     } catch (error) {
         console.error(error.message);
     }
 
-    const date = new Date("September 30, 2025 00:00:00")
+    const date = new Date()
     const parsed = ICAL.parse(result.calendar)
-    findeventson(date, parsed)
+    calendar.crunch(date, parsed)
 }
 
-function findeventson(now, parsed){
+calendar.crunch = function(now, parsed){
     if (!parsed){
         console.error("no jcal to parse")
         return
     }
 
     let parser = new ICAL.ComponentParser()
-    let towrite = "<b>" + new Date(now).toLocaleDateString("en-US",{"dateStyle":"full"}) + "</b><br><hr>"
-    const content = document.getElementById("contentarea2")
+    let towrite = []
 
     parser.onevent = (event) => {
         const s = event.startDate.toJSDate()
         const e = event.endDate.toJSDate()
         if ((now >= s) && (now < e)){
-            towrite += `${event.summary}<br><span class="small">`
-            if((e-s)<=(86400000)){
-                towrite += `${s.toLocaleDateString()}<br>`
-            } else {
-                towrite += `${s.toLocaleDateString()} - ${e.toLocaleDateString()}<br>`
-            }
-            towrite += "</span><hr>"
+            // if((e-s)<=(86400000)){
+            //     towrite += `${s.toLocaleDateString()}<br>`
+            // } else {
+            //     towrite += `${s.toLocaleDateString()} - ${e.toLocaleDateString()}<br>`
+            // }
+            // towrite += "</span><hr>"
+
+            towrite.push({
+                "event": event.summary,
+                "time-start": s,
+                "time-end": e
+            })
         }
     }
 
     parser.oncomplete = () => {
-        content.innerHTML = towrite
-        towrite = ""
+        // console.log(towrite)
+        calendar.cram(towrite)
     }
 
     parser.process(parsed)
 }
 
-fetchandparse()
+calendar.cram = function(stuff) {
+    const content = document.getElementById("contentarea2")
+    const placementzone = document.querySelector("#sidebar-events ul")
+    placementzone.innerHTML = ""
+    stuff.forEach(element => {
+        let newthing = document.createElement("li")
+        newthing.innerText = element.event
+
+        placementzone.append(newthing)
+    });
+}
+
+calendar.crack()
+setInterval(calendar.crack, 3600000)
