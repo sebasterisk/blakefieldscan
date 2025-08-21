@@ -11,24 +11,61 @@
 </head>
 <body>
     <h1>configure</h1>
-    CONFIGURATION!!!
+    for now, you'll have to edit the JSON directly but I'll fix it later trust
+    <br>
+    this is the current config, change it then hit 'run it'. screens should update within 10 mins
+    <br>
 
-    <form>
-        <fieldset>
-            <legend>Images</legend>  
-            Type in a list of image URLs delimited by line breaks. <br>
-            <textarea name="imagelist" id="imagelist"></textarea>
-        </fieldset>
+    <textarea id="config"></textarea>
+    <br>
+    <button id="button" onclick="post()">run it</button>
+    <span id="message"></span>
 
-        <fieldset>
-            <legend>Ticker</legend>
-            Type in a list of messages to appear in the lower-third ticker, delimited by line breaks. <br>
-            <textarea name="tickerlist" id="tickerlist"></textarea>
-        </fieldset>
+    <script>
+        let result
+        async function get(){
+            let current_config
+            try {
+                const data = await fetch("/server/config.php")
+                if (!data.ok) {
+                    throw new Error(`Getting config returned ${data.status}`)
+                }
 
-        <input type="submit" value="GO!!!">
-    </form>
-    
-    <!--TODO: the scripting lol-->
+                result = await data.json();
+                console.log(result);
+            } catch (error) {
+                console.error(error.message);
+            }
+
+            current_config = result
+            document.querySelector("#config").innerHTML = JSON.stringify(result, null, 4)
+        }
+
+        async function post() {
+            document.querySelector("#button").disabled = true
+            try {
+                const response = await fetch("/server/config.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: document.querySelector("#config").value
+                });
+
+                const resptext = await response.text()
+                document.querySelector("#message").innerHTML += `The server responded with ${response.status}. ${resptext}`
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                location.reload()
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+
+        get()
+    </script>
 </body>
 </html>

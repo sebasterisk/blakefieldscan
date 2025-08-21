@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     json_decode($input);
     if (json_last_error() !== JSON_ERROR_NONE) {
         http_response_code(400);
-        echo json_encode(["error" => "Invalid JSON"]);
+        echo json_encode(["error" => "Invalid JSON", "what-was-sent" => $input]);
         exit;
     }
 

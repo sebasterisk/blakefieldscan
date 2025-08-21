@@ -1,4 +1,14 @@
-let config = {}
+let config = {
+    "img_index": 0,
+    "img_length": 0,
+
+    "result": {
+        "images": [],
+        "text": []
+    }
+}
+
+config.result = 
 
 config.crack = async function(){
     let result
@@ -14,6 +24,7 @@ config.crack = async function(){
         console.error(error.message);
     }
 
+    config.result = result
     config.cram(result)
 }
 
@@ -32,7 +43,31 @@ config.cram = function(stuff){
     const speed = tickerwidth / 100
 
     document.documentElement.style.setProperty("--speed", speed+"s")
+
+    // stuff.images.forEach(element => {
+    //     let image = new Image()
+    //     image.src = element
+    // })
+}
+
+config.image_rotate = function(){
+    const image = document.querySelector("#display-image")
+
+    config.img_index += 1
+    if (config.img_index > config.result.images.length - 1){
+        config.img_index = 0
+    }
+    image.classList.remove("post-transitional")
+    image.classList.add("transitional")
+
+    setTimeout(()=>{
+        image.src = config.result.images[config.img_index]
+        image.classList.remove("transitional")
+        image.classList.add("post-transitional")
+    }, 1250)
 }
 
 config.crack()
-setInterval(config.crack, 600000)
+setInterval(config.crack, 180000)
+
+setInterval(config.image_rotate, 8000)

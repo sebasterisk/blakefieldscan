@@ -95,6 +95,10 @@ body{
         font-size: 4cqh;
     }
 
+    .size5 {
+        font-size: 4.5cqh;
+    }
+
     .tight{
         letter-spacing: -0.02em;
     }
@@ -157,6 +161,15 @@ body{
         padding: 0.7cqw 3cqh;
         line-height: 1em;
     } 
+
+    #image-content {
+        margin: 3cqh;
+    }
+
+    #display-image {
+        width: 71cqw;
+        height: 65cqh;
+    }
 }
 
 #clock {
@@ -207,4 +220,18 @@ body{
       right: calc(100% + 1rem);
       transform: translate(0%, 0%);
    }
+}
+
+#display-image {
+    image-rendering: optimizeSpeed;
+    object-fit: contain;
+}
+
+.transitional {
+    opacity: 0%;
+    transition: opacity 1s;
+}
+.post-transitional {
+    opacity: 100%;
+    transition: opacity 1s;
 }

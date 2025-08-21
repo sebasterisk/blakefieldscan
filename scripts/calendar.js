@@ -17,7 +17,7 @@ calendar.crack = async function(){
         console.error(error.message);
     }
 
-    const date = new Date()
+    const date = new Date().setHours(0,0,0,0)
     const parsed = ICAL.parse(result.calendar)
     calendar.crunch(date, parsed)
 }
@@ -34,7 +34,7 @@ calendar.crunch = function(now, parsed){
     parser.onevent = (event) => {
         const s = event.startDate.toJSDate()
         const e = event.endDate.toJSDate()
-        if ((now >= s) && (now < e)){
+        if ( ((now <= s) && (now.valueOf() + 86400000 > e.valueOf())) || ((now >= s) && (now.valueOf() + 86400000 <= e.valueOf())) ){
             // if((e-s)<=(86400000)){
             //     towrite += `${s.toLocaleDateString()}<br>`
             // } else {
