@@ -5,10 +5,10 @@ let config = {
     "result": {
         "images": [],
         "text": []
-    }
-}
+    },
 
-config.result = 
+    "contentarea1_index": 0
+}
 
 config.crack = async function(){
     let result
@@ -67,7 +67,27 @@ config.image_rotate = function(){
     }, 1250)
 }
 
+config.rotate = function(){
+    let contentarea1_rotation = document.querySelector("#contentarea1").children
+    const current = contentarea1_rotation[config.contentarea1_index]
+    config.contentarea1_index += 1
+    
+    if (config.contentarea1_index > contentarea1_rotation.length - 1){
+        config.contentarea1_index = 0
+    }
+    
+    const next = contentarea1_rotation[config.contentarea1_index]
+
+    current.classList.remove("post-transitional")
+    current.classList.add("transitional")
+
+    setTimeout(()=>{
+        next.classList.remove("transitional")
+        next.classList.add("post-transitional")
+    }, 1250)
+}
+
 config.crack()
 setInterval(config.crack, 180000)
-
 setInterval(config.image_rotate, 8000)
+setInterval(config.rotate, 32000)

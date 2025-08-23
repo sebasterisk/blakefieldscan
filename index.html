@@ -22,6 +22,32 @@
             <div id="image-content">
                 <img src="" id="display-image">
             </div>
+
+            <div id="weather-content">
+                <img src="https://api.weather.gov/icons/land/night/rain?size=medium" id="weather-icon">
+                <div id="weather-temp" class="roboto-narrowbold tight size1">111&deg;</div>
+                <div id="weather-status" class="roboto-narrow tight size3">Mostly Cloudy</div>
+                <ul id="weather-etc" class="list roboto-narrow size4 static-for-children de-emph">
+                    <li>Wind <span id="weather-wind-dir"></span> <span id="weather-wind-sp"></span> mph</li>
+                    <li>Humidity <span id="weather-humid"></span>%</li>
+                    <li>Pressure <span id="weather-pres"></span>"</li>
+                </ul>
+
+                <div id="weather-forecast" class="static-for-children roboto-narrow size4 tight flex vertically">
+                    <div id="forecast-1" class="weather-forecast-segment flex"></div>
+                    <div id="forecast-2" class="weather-forecast-segment flex"></div>
+                    <div id="forecast-3" class="weather-forecast-segment flex"></div>
+                    <div id="forecast-4" class="weather-forecast-segment flex"></div>
+                    <div id="forecast-5" class="weather-forecast-segment flex"></div>
+                
+                    <template>
+                        <span class="roboto-narrowbold weather-forecast-day block">TODAY</span>
+                        <span class="roboto-narrow size3 weather-forecast-temp">111&deg;</span>
+                        <img src="https://api.weather.gov/icons/land/night/rain?size=medium" class="weather-forecast-icon">
+                        <span class="roboto-narrow size3 weather-forecast-chance de-emph">60%</span>
+                    </template>
+                </div>
+            </div>
         </div>
 
         <!-- SIDEBAR content area -->
@@ -34,7 +60,8 @@
             </div>
         </div>
 
-        <div id="products" class=""></div>
+        <div id="products" class="roboto-condbolder size4 sub"></div>
+
         <div id="ticker" class="marquee">
             <div id="ticker-content" class="roboto-narrow size3">
                 <!-- items here -->
@@ -45,6 +72,8 @@
     <!-- SCRIPTS -->
     <script src="scripts/clock.js"></script>
     <script src="scripts/config.js"></script>
+    <script src="scripts/retrieve.js"></script>
     <script src="scripts/calendar.js" type="module"></script>
+    <script src="scripts/weather.js"></script>
 </body>
 </html>

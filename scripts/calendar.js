@@ -1,24 +1,11 @@
 // freshman year era code being reused here :skull: might replace
 
 import ICAL from "https://unpkg.com/ical.js@2.2.1/dist/ical.js";
-let calendar = {}
+window.calendar = {}
 
 calendar.crack = async function(){
-    let result
-    try {
-        const icaldata = await fetch("/server/products.php")
-        if (!icaldata.ok) {
-            throw new Error(`Getting calendar returned ${icaldata.status}`)
-        }
-
-        result = await icaldata.json();
-        // console.log(result);
-    } catch (error) {
-        console.error(error.message);
-    }
-
     const date = new Date().setHours(0,0,0,0)
-    const parsed = ICAL.parse(result.calendar)
+    const parsed = ICAL.parse(product.calendar)
     calendar.crunch(date, parsed)
 }
 
@@ -69,6 +56,3 @@ calendar.cram = function(stuff) {
         placementzone.append(newthing)
     });
 }
-
-calendar.crack()
-setInterval(calendar.crack, 3600000)
