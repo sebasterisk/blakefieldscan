@@ -60,7 +60,13 @@ weather.cram = function(){
         const fc_icon = new_thing.querySelector(".weather-forecast-icon")
         const fc_chance = new_thing.querySelector(".weather-forecast-chance")
         
-        fc_label.innerText = element.label.toUpperCase()
+        if (index > 5){ return }
+
+        if (element.label.includes("his")){
+            fc_label.innerText = "TODAY"
+        } else {
+            fc_label.innerText = element.label.toUpperCase()
+        }
         fc_temp.innerHTML = `${element.temp}&deg;`
         fc_icon.src = element.icon
         fc_chance.innerHTML = `${element.precip}%`
