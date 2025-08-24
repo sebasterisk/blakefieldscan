@@ -68,7 +68,7 @@ config.image_rotate = function(){
 }
 
 config.rotate = function(){
-    let contentarea1_rotation = document.querySelector("#contentarea1").children
+    let contentarea1_rotation = document.querySelectorAll("#contentarea1>*:not(.disabled)")
     const current = contentarea1_rotation[config.contentarea1_index]
     config.contentarea1_index += 1
     
