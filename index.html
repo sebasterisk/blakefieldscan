@@ -19,7 +19,7 @@
 
         <!-- MAIN content area -->
         <div id="contentarea1">
-            <div id="image-content" class="post-transitional">
+            <div id="image-content" class="transitional">
                 <img src="" id="display-image">
             </div>
 
@@ -45,6 +45,31 @@
                         <span class="roboto-narrow size3 weather-forecast-temp">111&deg;</span>
                         <img src="https://api.weather.gov/icons/land/night/rain?size=medium" class="weather-forecast-icon">
                         <span class="roboto-narrow size3 weather-forecast-chance de-emph">60%</span>
+                    </template>
+                </div>
+            </div>
+
+            <div id="sched-content" class="transitional">
+                <div id="next-up" class="roboto-narrow de-emph static-for-children size3">
+                    <div id="next-up-label" class="flex-one roboto-condbolder"></div>
+                    <div id="next-up-time" class="yellow roboto-narrowbold size1"><span id="next-up-time-readout">0</span><span class="size3 roboto-narrow"> min</span></div>
+                </div>
+
+                <div id="schedule-mission" class="dark roboto-condbold">NORM(AUTO)</div>
+
+                <div id="schedule" class="roboto-narrow flex vertically static-for-children de-emph altflex">
+                    <template id="schedule-element-temp">
+                        <div class="schedule-element flex-one flex static-for-children size6">
+                            <span class="period-name block flex-one">Period 1</span>
+                            <span class="period-time block flex-one roboto-condbold">8:05 &ndash; 9:05</span>
+                        </div>
+                    </template>
+                    <template id="dual-schedule-element-temp">
+                        <div class="dual-schedule-element flex-one flex static-for-children size6">
+                            <span class="period-name block flex-one">Period 3</span>
+                            <span class="period-time-f block flex-one roboto-condbold">8:05 &ndash; 9:05</span>
+                            <span class="period-time-l block flex-one roboto-condbold">8:05 &ndash; 9:05</span>
+                        </div>
                     </template>
                 </div>
             </div>

@@ -27,6 +27,15 @@
     "wdth" 75;
 }
 
+.roboto-cond {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 87.5;
+}
+
 .roboto-condbold {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
@@ -99,6 +108,10 @@ body{
     color: #163d7e;
 }
 
+.dark {
+    color: #091a37;
+}
+
 .inline-block {
     display: inline-block;
 }
@@ -118,6 +131,10 @@ body{
 
     .size5 {
         font-size: 4.5cqh;
+    }
+
+    .size6 {
+        font-size: 3.65cqh;
     }
 
     .tight{
@@ -251,9 +268,45 @@ body{
     .list.horizontally li {
         margin: 0 0.5cqw;
     }
+
+    #next-up{
+        width: 50cqw;
+        height: 17cqh;
+        top: 5cqh;
+        left: 12cqw;
+        border-radius: 1cqh;
+    }
+
+    #next-up-time {
+        min-width: 11cqw;
+        width: fit-content;
+        height: 100%;
+        padding: 3cqh 1.5cqw;
+        text-align: center;
+        border-radius: 0 1cqh 1cqh 0;
+    }
+
+    #next-up-label {
+        padding: 5.5cqh 1.5cqw;
+    }
+
+    #schedule {
+        top: 25cqh;
+        left: 12cqw;
+        width: 50cqw;
+        height: 38cqh;
+    }
+
+    .schedule-element > *, .dual-schedule-element > *{
+        padding: 0.75% 5%;
+    }
 }
 
 #clock {
+    color: #ffd456
+}
+
+.yellow {
     color: #ffd456
 }
 
@@ -344,6 +397,10 @@ body{
     flex: 1;
 }
 
+.flex-one {
+    flex: 1
+}
+
 .weather-forecast-temp, .weather-forecast-chance {
     flex: 1;
     text-align: center;
@@ -379,4 +436,20 @@ body{
     transition-delay: 1s;
 }
 
+#next-up{
+    background-color: #588be444;
+    backdrop-filter: blur(2px);
+    display: flex;
+}
 
+#next-up-time{
+    background-color: #0b0e0e;
+}
+
+.altflex > *:nth-child(even){
+    background-color: #0f254b44;
+}
+
+.altflex > *:nth-child(odd){
+    background-color: #091a3744;
+}
