@@ -92,4 +92,4 @@ config.rotate = function(){
 config.crack()
 setInterval(config.crack, 180000)
 setInterval(config.image_rotate, 8000)
-//setInterval(config.rotate, 32000)
+setInterval(config.rotate, 32000)

@@ -453,3 +453,19 @@ body{
 .altflex > *:nth-child(odd){
     background-color: #091a3744;
 }
+
+#next-up-time-readout[data-TIME="1"] {
+    animation: flashy 2s step-start 0s infinite;
+}
+
+@keyframes flashy {
+    0%{
+        color: #ffd45688;
+    }
+    50%{
+        color: #ffd456ff;
+    }
+    100%{
+        color: #ffd45688;
+    }
+}
