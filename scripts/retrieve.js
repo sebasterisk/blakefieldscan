@@ -18,6 +18,7 @@ async function retrieve(){
 
     window.calendar.crack()
     window.weather.cram()
+    schedule.crack()
 }
 
 retrieve()

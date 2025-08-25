@@ -1,7 +1,9 @@
 // freshman year era code being reused here :skull: might replace
 
 import ICAL from "https://unpkg.com/ical.js@2.2.1/dist/ical.js";
-window.calendar = {}
+window.calendar = {
+    "inferred_schedule": "NORM"
+}
 
 calendar.crack = async function(){
     const date = new Date().setHours(0,0,0,0)
@@ -28,6 +30,11 @@ calendar.crunch = function(now, parsed){
             //     towrite += `${s.toLocaleDateString()} - ${e.toLocaleDateString()}<br>`
             // }
             // towrite += "</span><hr>"
+            Object.keys(config.result.schedule_infer).forEach(kw_array_key => {
+                const kw_array = config.result.schedule_infer[kw_array_key]
+                const found = kw_array.some(x => event.summary.includes(x))
+                if (found){ calendar.inferred_schedule = kw_array_key }
+            });
 
             towrite.push({
                 "event": event.summary,
@@ -39,6 +46,7 @@ calendar.crunch = function(now, parsed){
 
     parser.oncomplete = () => {
         // console.log(towrite)
+        console.log(calendar.inferred_schedule)
         calendar.cram(towrite)
     }
 
