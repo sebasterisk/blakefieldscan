@@ -63,4 +63,9 @@ calendar.cram = function(stuff) {
 
         placementzone.append(newthing)
     });
+
+    const height = placementzone.scrollHeight
+    document.documentElement.style.setProperty("--calendarheight", (height > content.scrollHeight ? ((-1*height)+"px") : 0))
+    document.documentElement.style.setProperty("--calendarinitoff", (height > content.scrollHeight ? (content.scrollHeight + "px") : 0))
+    document.documentElement.style.setProperty("--calendarspeed", (height/35)+"s")
 }

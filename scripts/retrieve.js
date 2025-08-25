@@ -12,6 +12,10 @@ async function retrieve(){
         // console.log(result);
     } catch (error) {
         console.error(error.message);
+        console.log("Refreshing in 15 Seconds?!")
+        setTimeout(()=>{
+            location.reload()
+        },15000)
     }
 
     product = result

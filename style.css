@@ -172,6 +172,11 @@ body{
         right: 0cqh;
         height: 68cqh;
         width: 26cqw;
+        overflow: hidden;
+    }
+
+    #calendaritems-div{
+        height: 63cqh;
     }
 
     #sidetitle {
@@ -467,5 +472,23 @@ body{
     }
     100%{
         color: #ffd45688;
+    }
+}
+
+#calendaritems {
+    animation: calendar var(--calendarspeed) linear 2s infinite;
+    container: calendar size;
+}
+
+.hide-overflow{
+    overflow: hidden;
+}
+
+@keyframes calendar {
+    0%{
+        top: var(--calendarinitoff)
+    }
+    100%{
+        top: var(--calendarheight);
     }
 }
