@@ -11,7 +11,7 @@
 </head>
 <body>
     <h1>configure</h1>
-    for now, you'll have to edit the JSON directly but I'll fix it later trust
+    for now, you'll have to edit the JSON directly
     <br>
     this is the current config, change it then hit 'run it'. screens should update within 10 mins
     <br>
@@ -67,5 +67,56 @@
 
         get()
     </script>
+
+    <hr>
+    <div>
+        <h2>reference</h2>
+        <p><b>images</b> array of strings, each entry is a URL that points to an image. up to 4 images work</p>
+        <p><b>text</b> array of strings, each entry is text that is shown on the lower-third scrolling ticker</p>
+        <p><b>schedule</b> string, which must be one of the following four-letter codes: NORM, WEDS, MASS, FORU, LATE, EARL, ANCH, AUTO.</p>
+        <ul>
+            <li>if AUTO, will use schedule-infer against the calendar entries to automatically select the best schedule</li>
+            <li>otherwise, the selected schedule code will be used.</li>
+        </ul>
+        <p><b>schedule-infer</b> an object. each KEY is a schedule code (NORM, WEDS, etc.) and each VALUE is an 
+            array of strings that, when found in a calendar entry, uses the corresponding schedule described, in descending priority, 
+            defaulting to NORM when no others fit.
+        </p>
+    </div>
+    <div>
+        <h2>defaults</h2>
+        <pre><code>
+{
+    "images": [
+        "https://bbk12e1-cdn.myschoolcdn.com/ftpimages/869/misc/misc_207650.png"
+    ],
+    "text": [
+        "Change me! Enter the configuration page"
+    ],
+    "schedule": "NORM",
+    "schedule_infer": {
+        "ANCH": [
+            "Anchor Day"
+        ],
+        "EARL": [
+            "Dismissal"
+        ],
+        "LATE": [],
+        "FORU": [
+            "Forum"
+        ],
+        "MASS": [
+            "Mass"
+        ],
+        "WEDS": [
+            "9:00 Start"
+        ],
+        "NORM": []
+    }
+}
+        </code></pre>
+    </div>
+
+    <a href="//github.com/sebasterisk/blakefieldscan">github</a>
 </body>
 </html>

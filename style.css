@@ -268,6 +268,8 @@ body{
 
     .weather-forecast-day {
         width: 10cqw;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
     }
 
     .list.horizontally li {
@@ -283,7 +285,7 @@ body{
     }
 
     #next-up-time {
-        min-width: 11cqw;
+        min-width: 18cqw;
         width: fit-content;
         height: 100%;
         padding: 3cqh 1.5cqw;
@@ -299,7 +301,9 @@ body{
         top: 25cqh;
         left: 12cqw;
         width: 50cqw;
-        height: 38cqh;
+        min-height: 38cqh;
+        border-radius: 1cqh;
+        overflow: hidden;
     }
 
     .schedule-element > *, .dual-schedule-element > *{
@@ -443,7 +447,7 @@ body{
 
 #next-up{
     background-color: #588be444;
-    backdrop-filter: blur(2px);
+    background-size: cover;
     display: flex;
 }
 
@@ -461,6 +465,12 @@ body{
 
 #next-up-time-readout[data-TIME="1"] {
     animation: flashy 2s step-start 0s infinite;
+}
+
+#schedule {
+    background-image: url(/images/schedback.png);
+    background-size: cover;
+    background-position: 50%;
 }
 
 @keyframes flashy {
@@ -491,4 +501,14 @@ body{
     100%{
         top: var(--calendarheight);
     }
+}
+
+.flipout {
+    transform: rotateX(90deg);
+    transition: transform 0.5s ease-in;
+}
+
+.flipin {
+    transform: rotateX(0deg);
+    transition: transform 0.5s ease-out;
 }

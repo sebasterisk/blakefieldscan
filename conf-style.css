@@ -29,3 +29,12 @@ textarea {
     width: 100%;
     height: 400px;
 }
+
+code{
+    font-family: 'Courier New', Courier, monospace;
+    text-wrap: wrap;
+}
+
+pre{
+    background-color: #eee;
+}

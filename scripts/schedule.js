@@ -1,6 +1,9 @@
 let schedule = {
     "selected": "NORM",
-    "selected_schedule": {}
+    "selected_schedule": {},
+    "minutes": 0,
+    "time": "",
+    "display": false
 }
 
 schedule.crack = async function(){
@@ -72,7 +75,7 @@ schedule.tick = function(){
             let xa = date + time_block[0]*1000
             let xb = now.valueOf()
 
-            if (date + time_block[0]*1000 > now.valueOf() && !found){
+            if (xa > xb && !found){
                 next_start_time = time_block[0]*1000
                 next_name = period_name
                 found = true
@@ -84,8 +87,39 @@ schedule.tick = function(){
     const next_up_time = document.querySelector("#next-up-time-readout")
 
     next_up_label.innerText = next_name
-    next_up_time.innerText = next_start_time == 0 ? "..." : Math.ceil( ((date + next_start_time) - now)/60000 )
+    schedule.minutes = next_start_time == 0 ? "..." : Math.ceil( ((date + next_start_time) - now)/60000 )
+    schedule.time = new Date(date + next_start_time).toLocaleTimeString("en-US", {"timeStyle":"short"}).slice(0,-3)
     next_up_time.setAttribute("data-TIME", next_up_time.innerText)
 }
 
+schedule.flip = function(){
+    const next_up_time = document.querySelector("#next-up-time-readout")
+    const next_up_time_suffix = document.querySelector("#next-up-time-suffix")
+    const next_up_whole = document.querySelector("#next-up-whole")
+
+    next_up_whole.classList.remove("flipin")
+    next_up_whole.classList.add("flipout")
+
+    schedule.display = !schedule.display
+    
+    setTimeout(()=>{
+        switch (schedule.display){
+            case true:
+                next_up_time.innerHTML = schedule.minutes
+                next_up_time_suffix.innerHTML = "min"
+
+                break
+            case false:
+                next_up_time.innerHTML = schedule.time
+                next_up_time_suffix.innerHTML = ""
+
+                break
+        }
+
+        next_up_whole.classList.remove("flipout")
+        next_up_whole.classList.add("flipin")
+    }, 600)
+}
+
 setInterval(schedule.tick, 100)
+setInterval(schedule.flip, 5000)

@@ -20,7 +20,7 @@
         <!-- all elements are position: absolute, order should NOT matter -->
         <div id="title" class="roboto-narrowbold size1 tight">  information     </div>
         <div id="clock" class="roboto-narrowbold size1 tight">  12:56           </div>
-        <div id="date" class="roboto-narrow size3">     August 12, 2036 </div>
+        <div id="date" class="roboto-narrow size3">     August 12, 2036         </div>
 
         <!-- MAIN content area -->
         <div id="contentarea1">
@@ -57,11 +57,16 @@
             <div id="sched-content" class="transitional">
                 <div id="next-up" class="roboto-narrow de-emph static-for-children size3">
                     <div id="next-up-label" class="flex-one roboto-condbolder"></div>
-                    <div id="next-up-time" class="yellow roboto-narrowbold size1"><span id="next-up-time-readout">0</span><span class="size3 roboto-narrow"> min</span></div>
+                    <div id="next-up-time" class="yellow roboto-narrowbold size1">
+                        <span id="next-up-whole" class="block">
+                            <span id="next-up-time-readout" class="tight">0</span>
+                            <span id="next-up-time-suffix" class="size3 roboto-narrow"> min</span>
+                        </span>
+                    </div>
                 </div>
 
                 <div id="schedule-mission" class="dark roboto-condbold">NORM(AUTO)</div>
-
+                
                 <div id="schedule" class="roboto-narrow flex vertically static-for-children de-emph altflex">
                     <!-- items here -->
                 </div>

@@ -70,6 +70,10 @@ config.image_rotate = function(){
 }
 
 config.rotate = function(){
+    clearInterval(config.image_interval)
+    config.image_rotate()
+    config.image_interval = setInterval(config.image_rotate, 8000)
+
     let contentarea1_rotation = document.querySelectorAll("#contentarea1>*:not(.disabled)")
     const current = contentarea1_rotation[config.contentarea1_index]
     config.contentarea1_index += 1
@@ -91,5 +95,4 @@ config.rotate = function(){
 
 config.crack()
 setInterval(config.crack, 180000)
-setInterval(config.image_rotate, 8000)
 setInterval(config.rotate, 32000)
