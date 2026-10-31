@@ -9,7 +9,7 @@ let schedule = {
 schedule.crack = async function(){
     let result
     try {
-        const data = await fetch("/server/schedules.json")
+        const data = await fetch("server/schedules.json")
         if (!data.ok) {
             throw new Error(`Getting calendar returned ${data.status}`)
         }

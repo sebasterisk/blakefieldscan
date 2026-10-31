@@ -3,7 +3,7 @@ let product = {}
 async function retrieve(){
     let result
     try {
-        const data = await fetch("/server/products.php")
+        const data = await fetch("server/products.php")
         if (!data.ok) {
             throw new Error(`Getting calendar returned ${data.status}`)
         }

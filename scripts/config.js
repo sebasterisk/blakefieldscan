@@ -15,7 +15,7 @@ let config = {
 config.crack = async function(){
     let result
     try {
-        const data = await fetch("/server/config.php")
+        const data = await fetch("server/config.php")
         if (!data.ok) {
             throw new Error(`Getting config returned ${data.status}`)
         }
