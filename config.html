@@ -26,7 +26,7 @@
         async function get(){
             let current_config
             try {
-                const data = await fetch("/server/config.php")
+                const data = await fetch("server/config.php")
                 if (!data.ok) {
                     throw new Error(`Getting config returned ${data.status}`)
                 }
@@ -44,7 +44,7 @@
         async function post() {
             document.querySelector("#button").disabled = true
             try {
-                const response = await fetch("/server/config.php", {
+                const response = await fetch("server/config.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
